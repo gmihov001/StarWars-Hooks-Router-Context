@@ -1,15 +1,64 @@
 import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
-import "../../styles/home.scss";
+import { Context } from "../store/appContext";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
-);
+import { Card2 } from "../components/card2";
+
+export class Home extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			characters: [],
+			planets: []
+		};
+	}
+
+	componentDidMount = () => {};
+
+	render() {
+		return (
+			<div className="container">
+				<Context.Consumer>
+					{({ actions, store }) => (
+						<>
+							<div className="row scroller">
+								<h4 className="m-3">CHARACTERS</h4>
+								<div className="card-columns">
+									{store.characters
+										? store.characters.map((elem, index) => {
+												return (
+													<Card2
+														key={index}
+														imgUrl="https://lumiere-a.akamaihd.net/v1/images/vicruls-sythe-main_e404bc44.jpeg"
+														entity={elem}
+														index={index}
+													/>
+												);
+										  })
+										: null}
+								</div>
+							</div>
+							<div className="row scroller">
+								<h4 className="m-3">PLANETS</h4>
+								<div className="card-columns">
+									{store.planets
+										? store.planets.map((elem, index) => {
+												return (
+													<Card2
+														className="textCustom"
+														key={index}
+														imgUrl="https://lumiere-a.akamaihd.net/v1/images/aeos-prime-main_1af6e847.jpeg"
+														entity={elem}
+														index={index}
+													/>
+												);
+										  })
+										: null}
+								</div>
+							</div>
+						</>
+					)}
+				</Context.Consumer>
+			</div>
+		);
+	}
+}
