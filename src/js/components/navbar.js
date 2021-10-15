@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 export const Navbar = props => {
 	const { store, actions } = useContext(Context);
 
-	const [showDropdown, setShowDropdown] = useState(false);
 	const [clickedDropDown, setClickedDropdown] = useState(false);
 
 	let show = "";
@@ -22,18 +21,21 @@ export const Navbar = props => {
 						width="auto;"
 					/>
 				</Link>
-				<a className={"nav-item dropdown " + (showDropdown ? "show" : "")}>
+
+				<div className="nav-item dropdown">
 					<button
-						className="faves btn btn-outline-dark nav-link dropdown-toggle"
+						className="nav-link faves btn btn-outline-dark dropdown-toggle"
+						type="button"
 						href="#"
 						id="navbarDropdown"
 						role="button"
 						data-toggle="dropdown"
 						aria-haspopup="true"
-						aria-expanded={clickedDropDown}
+						aria-expanded="false"
 						onClick={() => setClickedDropdown(!clickedDropDown)}>
 						FAVORITES <span className="badge badge-secondary">{store.favorites.length}</span>
 					</button>
+
 					<div
 						className={store.favorites.length > 0 ? "dropdown-menu " + show : "d-none"}
 						aria-labelledby="navbarDropdown">
@@ -58,7 +60,7 @@ export const Navbar = props => {
 							  ))
 							: null}
 					</div>
-				</a>
+				</div>
 			</div>
 		</nav>
 	);

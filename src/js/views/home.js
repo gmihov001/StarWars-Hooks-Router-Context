@@ -22,7 +22,7 @@ export class Home extends React.Component {
 						<>
 							<div className="row scroller">
 								<h4 className="m-3">CHARACTERS</h4>
-								<div className="card-deck">
+								<div className="d-flex flex-row">
 									{store.characters
 										? store.characters.map((elem, index) => {
 												return (
@@ -39,7 +39,7 @@ export class Home extends React.Component {
 							</div>
 							<div className="row scroller">
 								<h4 className="m-3">PLANETS</h4>
-								<div className="card-columns">
+								<div className="d-flex flex-row">
 									{store.planets
 										? store.planets.map((elem, index) => {
 												return (

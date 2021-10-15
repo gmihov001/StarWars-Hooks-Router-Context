@@ -12,7 +12,7 @@ export const Card2 = props => {
 	}
 	console.log("propArr", propArr);
 	return (
-		<div className="card m-3" style={{ width: "18rem" }}>
+		<div className="card m-3 flex-shrink-0" style={{ width: "18rem" }}>
 			<img src={props.imgUrl} className="card-img-top" alt="..." />
 			<div className="card-body">
 				<h5 className="card-title">{propArr[0].propvalue}</h5>
