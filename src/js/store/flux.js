@@ -37,7 +37,7 @@ const getState = ({ getStore, setStore }) => {
 				}
 			},
 			deleteFromFavorites: elm => {
-				console.log(elm);
+				// console.log(elm);
 				var { favorites } = getStore();
 
 				setStore({

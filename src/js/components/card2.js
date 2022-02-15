@@ -7,7 +7,7 @@ export const Card2 = props => {
 	const { store, actions } = useContext(Context);
 
 	var data = props.entity;
-	const isFav = store.favorites.find(f => f.entity.name == data.name);
+	var isFav = store.favorites.find(f => f.entity.name == data.name);
 	// console.log("isFave", isFav);
 
 	let propArr = [];
@@ -41,7 +41,9 @@ export const Card2 = props => {
 					<button
 						type="button"
 						className="btn btn-outline-warning"
-						onClick={isFav ? actions.deleteFromFavorites(props) : () => actions.addToFavorites(props)}>
+						onClick={
+							isFav ? () => actions.deleteFromFavorites(props) : () => actions.addToFavorites(props)
+						}>
 						{isFav ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
 					</button>
 				</div>
