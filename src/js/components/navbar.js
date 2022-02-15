@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 
 export const Navbar = props => {
 	const { store, actions } = useContext(Context);
-
 	const [clickedDropDown, setClickedDropdown] = useState(false);
 
 	let show = "";
