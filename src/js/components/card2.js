@@ -10,7 +10,8 @@ export const Card2 = props => {
 	for (let property in data) {
 		propArr.push({ propname: property, propvalue: data[property] });
 	}
-	console.log("propArr", propArr);
+	// console.log("propArr", propArr);
+
 	return (
 		<div className="card m-3 flex-shrink-0" style={{ width: "18rem" }}>
 			<img src={props.imgUrl} className="card-img-top" alt="..." />
@@ -36,7 +37,7 @@ export const Card2 = props => {
 					<Context.Consumer>
 						{({ actions, store }) => {
 							const isFav = store.favorites.find(f => f.entity.name == props.entity.name);
-							console.log("isFave", isFav);
+							// console.log("isFave", isFav);
 
 							return (
 								<button

@@ -13,7 +13,6 @@ const getState = ({ getStore, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
-						console.log("data", data);
 						setStore({ characters: data.results });
 					});
 			},
@@ -26,7 +25,6 @@ const getState = ({ getStore, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
-						console.log("data", data);
 						setStore({ planets: data.results });
 					})
 					.catch(error => console.log(error));
