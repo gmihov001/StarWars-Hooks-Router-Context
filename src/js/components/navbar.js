@@ -14,11 +14,7 @@ export const Navbar = props => {
 		<nav className="navbar navbar-light header d-flex justify-content-between">
 			<div className="container">
 				<Link className="navbar-brand text-white" to="/">
-					<img
-						src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/cfd241b0-85a3-4363-87b1-51c6732af3fd"
-						height="100px;"
-						width="auto;"
-					/>
+					<img src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/cfd241b0-85a3-4363-87b1-51c6732af3fd" />
 				</Link>
 
 				<div className="nav-item dropdown">

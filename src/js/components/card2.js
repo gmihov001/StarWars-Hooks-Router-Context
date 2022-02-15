@@ -7,14 +7,14 @@ export const Card2 = props => {
 	const { store, actions } = useContext(Context);
 
 	var data = props.entity;
-	var isFav = store.favorites.find(f => f.entity.name == data.name);
-	// console.log("isFave", isFav);
+	var isFav = store.favorites.find(fav => fav.entity.name == data.name);
+	console.log("isFave", isFav);
 
-	let propArr = [];
+	var propArr = [];
 	for (let property in data) {
 		propArr.push({ propname: property, propvalue: data[property] });
 	}
-	// console.log("propArr", propArr);
+	console.log("propArr", propArr);
 
 	return (
 		<div className="card m-3 flex-shrink-0" style={{ width: "18rem" }}>

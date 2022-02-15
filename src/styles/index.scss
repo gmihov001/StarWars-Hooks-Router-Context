@@ -8,7 +8,10 @@ body {
 }
 
 .header {
-    img{max-height: 50px;}
+    img { 
+        height: 90px;
+        width: 200px;
+     }
 }
 .scroller {
     overflow-x: auto;
@@ -35,8 +38,9 @@ h4 {
     color: lightgray;
     font-weight: 300;
 }
-.navbar {
+.navbar, .navbar-brand {
     background-color: black;
+    padding: 0;
 }
 .card {
     background-color: #202727;
