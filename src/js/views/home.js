@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Context } from "../store/appContext";
 
 import { Card2 } from "../components/card2";
 
-export class Home extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			characters: [],
-			planets: []
-		};
-	}
+export const Home = (props) =>  {
+	const [characters, setCharacters] = useState([]);
+	const [planets, setPlanets] =  useState([]);
+	
 
-	componentDidMount = () => {};
-
-	render() {
 		return (
 			<div className="container">
-				<Context.Consumer>
-					{({ actions, store }) => (
 						<>
 							<div className="row scroller">
 								<h4 className="m-3">CHARACTERS</h4>
@@ -56,9 +47,7 @@ export class Home extends React.Component {
 								</div>
 							</div>
 						</>
-					)}
-				</Context.Consumer>
+					
 			</div>
 		);
-	}
 }
