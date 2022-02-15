@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Card2 = props => {
+	const { store, actions } = useContext(Context);
+
+	const isFav = store.favorites.find(f => f.entity.name == props.entity.name);
+	// console.log("isFave", isFav);
+
 	var data = props.entity;
 
 	let propArr = [];
@@ -34,21 +39,12 @@ export const Card2 = props => {
 							LEARN MORE
 						</button>
 					</Link>
-					<Context.Consumer>
-						{({ actions, store }) => {
-							const isFav = store.favorites.find(f => f.entity.name == props.entity.name);
-							// console.log("isFave", isFav);
-
-							return (
-								<button
-									type="button"
-									className="btn btn-outline-warning"
-									onClick={isFav ? null : () => actions.addToFavorites(props)}>
-									{isFav ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
-								</button>
-							);
-						}}
-					</Context.Consumer>
+					<button
+						type="button"
+						className="btn btn-outline-warning"
+						onClick={isFav ? null : () => actions.addToFavorites(props)}>
+						{isFav ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
+					</button>
 				</div>
 			</div>
 		</div>
