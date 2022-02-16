@@ -42,6 +42,13 @@ h4 {
     background-color: black;
     padding: 0;
 }
+.nav-item .btn {
+    color: lightgrey;
+}
+.nav-item .btn:hover {
+    border: 1px solid hotpink;
+    color: hotpink;
+}
 .card {
     background-color: #202727;
     color: white;

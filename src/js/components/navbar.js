@@ -6,6 +6,12 @@ import PropTypes from "prop-types";
 export const Navbar = props => {
 	const { store, actions } = useContext(Context);
 	const [clickedDropDown, setClickedDropdown] = useState(false);
+	const [matches, setMatches] = useState([]);
+
+	const searchTerm = term => {
+		let peopleOrPlanets = [...store.characters, ...store.planets];
+		let found = peopleOrPlanets.filter(item => item.name.toLowerCase().includes(term.toLowerCase()));
+	};
 
 	let show = "";
 	if (clickedDropDown) show = "show";
@@ -17,25 +23,18 @@ export const Navbar = props => {
 					<img src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/cfd241b0-85a3-4363-87b1-51c6732af3fd" />
 				</Link>
 
-				<div className="nav-item dropdown">
-					<button
-						className="nav-link faves btn btn-outline-dark dropdown-toggle"
-						type="button"
-						href="#"
-						id="navbarDropdown"
-						role="button"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false"
-						onClick={() => setClickedDropdown(!clickedDropDown)}>
-						FAVORITES <span className="badge badge-secondary">{store.favorites.length}</span>
-					</button>
-
-					<div
-						className={store.favorites.length > 0 ? "dropdown-menu " + show : "d-none"}
-						aria-labelledby="navbarDropdown">
-						{store.favorites.length > 0
-							? store.favorites.map((elm, index) => (
+				<div className="nav-item dropdown d-flex">
+					<div className="d-block me-3">
+						<input
+							className="form-control me-2"
+							onChange={e => searchTerm(e.target.value)}
+							type="search"
+							placeholder="Search"
+							aria-label="Search"
+						/>
+						<ul>
+							{matches.map((elm, index) => {
+								return (
 									<li
 										key={index}
 										className="dropdown-item d-flex align-items-center justify-content-between">
@@ -44,7 +43,7 @@ export const Navbar = props => {
 												pathname: `/details/${index + 1}`,
 												state: elm
 											}}>
-											{elm.entity.name}
+											{`match`}
 										</Link>
 										&nbsp;&nbsp;
 										<i
@@ -52,8 +51,48 @@ export const Navbar = props => {
 											onClick={() => actions.deleteFromFavorites(elm)}
 										/>
 									</li>
-							  ))
-							: null}
+								);
+							})}
+						</ul>
+					</div>
+					<div className="d-block">
+						<button
+							className="nav-link faves btn btn-outline-secondary dropdown-toggle"
+							type="button"
+							href="#"
+							id="navbarDropdown"
+							role="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+							onClick={() => setClickedDropdown(!clickedDropDown)}>
+							FAVORITES <span className="badge badge-secondary">{store.favorites.length}</span>
+						</button>
+
+						<ul
+							className={store.favorites.length > 0 ? "dropdown-menu " + show : "d-none"}
+							aria-labelledby="navbarDropdown">
+							{store.favorites.length > 0
+								? store.favorites.map((elm, index) => (
+										<li
+											key={index}
+											className="dropdown-item d-flex align-items-center justify-content-between">
+											<Link
+												to={{
+													pathname: `/details/${index + 1}`,
+													state: elm
+												}}>
+												{elm.entity.name}
+											</Link>
+											&nbsp;&nbsp;
+											<i
+												className="fas fa-backspace"
+												onClick={() => actions.deleteFromFavorites(elm)}
+											/>
+										</li>
+								  ))
+								: null}
+						</ul>
 					</div>
 				</div>
 			</div>
