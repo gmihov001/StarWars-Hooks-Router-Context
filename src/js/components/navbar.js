@@ -9,8 +9,13 @@ export const Navbar = props => {
 	const [matches, setMatches] = useState([]);
 
 	const searchTerm = term => {
-		let peopleOrPlanets = [...store.characters, ...store.planets];
-		let found = peopleOrPlanets.filter(item => item.name.toLowerCase().includes(term.toLowerCase()));
+		if (term != "" && term != " ") {
+			let peopleOrPlanets = [...store.characters, ...store.planets];
+			let found = peopleOrPlanets.filter(item => item.name.toLowerCase().includes(term.toLowerCase()));
+			setMatches(found);
+		} else if (!term || term == " ") {
+			setMatches([]);
+		}
 	};
 
 	let show = "";
@@ -26,14 +31,20 @@ export const Navbar = props => {
 				<div className="nav-item dropdown d-flex">
 					<div className="d-block me-3">
 						<input
-							className="form-control me-2"
-							onChange={e => searchTerm(e.target.value)}
+							className="nav-link dropdown-toggle me-2"
+							onChange={e => {
+								console.log(e.target.value);
+								searchTerm(e.target.value);
+							}}
 							type="search"
 							placeholder="Search"
 							aria-label="Search"
 						/>
-						<ul>
+						<ul
+							className={matches.length > 0 ? "dropdown-menu show" : "d-none"}
+							aria-labelledby="navbarDropdown">
 							{matches.map((elm, index) => {
+								console.log(elm);
 								return (
 									<li
 										key={index}
@@ -43,7 +54,7 @@ export const Navbar = props => {
 												pathname: `/details/${index + 1}`,
 												state: elm
 											}}>
-											{`match`}
+											{elm.name}
 										</Link>
 										&nbsp;&nbsp;
 										<i

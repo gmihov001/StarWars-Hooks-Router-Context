@@ -49,6 +49,9 @@ h4 {
     border: 1px solid hotpink;
     color: hotpink;
 }
+input:focus {
+    outline: none;
+}
 .card {
     background-color: #202727;
     color: white;
