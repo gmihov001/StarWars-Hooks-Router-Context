@@ -3,7 +3,7 @@ const getState = ({ getStore, setStore }) => {
 		store: {
 			favorites: [],
 			characters: sessionStorage.getItem("people") ? JSON.parse(sessionStorage.getItem("people")) : [],
-			planets: JSON.parse(sessionStorage.getItem("planets"))
+			planets: sessionStorage.getItem("planets") ? JSON.parse(sessionStorage.getItem("planets")) : []
 		},
 		actions: {
 			loadPeople: () => {
@@ -21,9 +21,7 @@ const getState = ({ getStore, setStore }) => {
 				}
 			},
 			loadPlanets: () => {
-				if (sessionStorage.getItem("planets")) {
-					setStore({ planets: sessionStorage.getItem("planets") });
-				} else {
+				if (!sessionStorage.getItem("planets")) {
 					fetch("https://swapi.dev/api/planets/")
 						.then(response => {
 							if (!response.ok) {
