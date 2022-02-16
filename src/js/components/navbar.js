@@ -44,7 +44,6 @@ export const Navbar = props => {
 							className={matches.length > 0 ? "dropdown-menu show" : "d-none"}
 							aria-labelledby="navbarDropdown">
 							{matches.map((elm, index) => {
-								console.log(elm);
 								return (
 									<li
 										key={index}
