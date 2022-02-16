@@ -6,7 +6,7 @@ export const Details = props => {
 	if (!useLocation().state) {
 		return (
 			<div className="container">
-				<h3 className="bg-light p-3 rounded">
+				<h3 className="bg-light mt-5 p-3 rounded text-center">
 					<span>No props received, return to </span>
 					<Link to="/">HOME</Link>
 				</h3>
