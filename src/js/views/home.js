@@ -13,7 +13,8 @@ export const Home = props => {
 				<div className="d-flex flex-row">
 					{store.characters
 						? store.characters.map((elem, index) => {
-								elem.imgUrl = "https://lumiere-a.akamaihd.net/v1/images/aeos-prime-main_1af6e847.jpeg";
+								elem.imgUrl =
+									"https://lumiere-a.akamaihd.net/v1/images/emily-swallow-interview-c_23a33c08.jpeg";
 								return <Card2 className="textCustom" key={index} entity={elem} />;
 						  })
 						: null}
