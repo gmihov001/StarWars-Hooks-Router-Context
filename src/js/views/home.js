@@ -13,14 +13,8 @@ export const Home = props => {
 				<div className="d-flex flex-row">
 					{store.characters
 						? store.characters.map((elem, index) => {
-								return (
-									<Card2
-										key={index}
-										imgUrl="https://lumiere-a.akamaihd.net/v1/images/vicruls-sythe-main_e404bc44.jpeg"
-										entity={elem}
-										index={index}
-									/>
-								);
+								elem.imgUrl = "https://lumiere-a.akamaihd.net/v1/images/aeos-prime-main_1af6e847.jpeg";
+								return <Card2 className="textCustom" key={index} entity={elem} />;
 						  })
 						: null}
 				</div>
@@ -30,15 +24,8 @@ export const Home = props => {
 				<div className="d-flex flex-row">
 					{store.planets
 						? store.planets.map((elem, index) => {
-								return (
-									<Card2
-										className="textCustom"
-										key={index}
-										imgUrl="https://lumiere-a.akamaihd.net/v1/images/aeos-prime-main_1af6e847.jpeg"
-										entity={elem}
-										index={index}
-									/>
-								);
+								elem.imgUrl = "https://lumiere-a.akamaihd.net/v1/images/aeos-prime-main_1af6e847.jpeg";
+								return <Card2 className="textCustom" key={index} entity={elem} />;
 						  })
 						: null}
 				</div>

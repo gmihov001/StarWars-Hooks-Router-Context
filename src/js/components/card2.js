@@ -7,7 +7,7 @@ export const Card2 = props => {
 	const { store, actions } = useContext(Context);
 
 	var data = props.entity;
-	var isFav = store.favorites.find(fav => fav.entity.name == data.name);
+	var isFav = store.favorites.find(fav => fav.name == data.name);
 	console.log("isFave", isFav);
 
 	var propArr = [];
@@ -18,7 +18,7 @@ export const Card2 = props => {
 
 	return (
 		<div className="card m-3 flex-shrink-0" style={{ width: "18rem" }}>
-			<img src={props.imgUrl} className="card-img-top" alt="..." />
+			<img src={data.imgUrl} className="card-img-top" alt="..." />
 			<div className="card-body">
 				<h5 className="card-title">{propArr[0].propvalue}</h5>
 				<p className="card-text">
@@ -31,8 +31,8 @@ export const Card2 = props => {
 				<div className="d-flex justify-content-between">
 					<Link
 						to={{
-							pathname: `/details/${props.index + 1}`,
-							state: props
+							pathname: `/details/${data.name}`,
+							state: data
 						}}>
 						<button href="#" className="btn btn-outline-dark learn-more">
 							LEARN MORE
@@ -41,9 +41,7 @@ export const Card2 = props => {
 					<button
 						type="button"
 						className="btn btn-outline-warning"
-						onClick={
-							isFav ? () => actions.deleteFromFavorites(props) : () => actions.addToFavorites(props)
-						}>
+						onClick={isFav ? () => actions.deleteFromFavorites(data) : () => actions.addToFavorites(data)}>
 						{isFav ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
 					</button>
 				</div>
