@@ -4,8 +4,7 @@ import { Card2 } from "../components/card2";
 
 export const Home = props => {
 	const { store, actions } = useContext(Context);
-	const [characters, setCharacters] = useState([]);
-	const [planets, setPlanets] = useState([]);
+	console.log(store);
 
 	return (
 		<div className="container">

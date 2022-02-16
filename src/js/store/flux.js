@@ -1,33 +1,41 @@
 const getState = ({ getStore, setStore }) => {
 	return {
 		store: {
-			favorites: []
+			favorites: [],
+			characters: sessionStorage.getItem("people") ? JSON.parse(sessionStorage.getItem("people")) : [],
+			planets: JSON.parse(sessionStorage.getItem("planets"))
 		},
 		actions: {
 			loadPeople: () => {
-				fetch("https://swapi.dev/api/people/")
-					.then(response => {
-						if (!response.ok) {
-							throw Error(response.statusText);
-						}
-						return response.json();
-					})
-					.then(data => {
-						setStore({ characters: data.results });
-					});
+				if (!sessionStorage.getItem("people")) {
+					fetch("https://swapi.dev/api/people/")
+						.then(response => {
+							if (!response.ok) {
+								throw Error(response.statusText);
+							}
+							return response.json();
+						})
+						.then(data => {
+							sessionStorage.setItem("people", JSON.stringify(data.results));
+						});
+				}
 			},
 			loadPlanets: () => {
-				fetch("https://swapi.dev/api/planets/")
-					.then(response => {
-						if (!response.ok) {
-							throw Error(response.statusText);
-						}
-						return response.json();
-					})
-					.then(data => {
-						setStore({ planets: data.results });
-					})
-					.catch(error => console.log(error));
+				if (sessionStorage.getItem("planets")) {
+					setStore({ planets: sessionStorage.getItem("planets") });
+				} else {
+					fetch("https://swapi.dev/api/planets/")
+						.then(response => {
+							if (!response.ok) {
+								throw Error(response.statusText);
+							}
+							return response.json();
+						})
+						.then(data => {
+							sessionStorage.setItem("planets", JSON.stringify(data.results));
+						})
+						.catch(error => console.log(error));
+				}
 			},
 			addToFavorites: entity => {
 				var tempStore = getStore();
