@@ -14,7 +14,7 @@ export const Home = props => {
 					{store.characters
 						? store.characters.map((elem, index) => {
 								elem.imgUrl =
-									"https://lumiere-a.akamaihd.net/v1/images/emily-swallow-interview-c_23a33c08.jpeg";
+									"https://lumiere-a.akamaihd.net/v1/images/vicruls-sythe-main_e404bc44.jpeg";
 								return <Card2 className="textCustom" key={index} entity={elem} />;
 						  })
 						: null}
