@@ -4,7 +4,17 @@
 body {
     font-family: 'Arial Narrow', 'Open Sans', 'Helvetica Neue', sans-serif;
     background-image: url("https://images.unsplash.com/photo-1534796636912-3b95b3ab5986");
-    background-color:rgb(20, 25, 25);
+    // background-color:rgb(20, 25, 25);
+    background-color: black;
+}
+
+.detailsPage h5 {
+    color: hotpink;
+    text-shadow: 2px 2px 3px black, 0 0 1px black;
+}
+
+.detailsPage .col-12 {
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .header {
